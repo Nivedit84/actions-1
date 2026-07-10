@@ -1,0 +1,29 @@
+name: Multiple Jobs
+
+on:
+  push:
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install and Run Cowsay
+        run: |
+              chmod +x ./scripts/cowsay.sh
+              ./scripts/cowsay.sh
+      - name: Sleep for 30 seconds
+        run: sleep 30
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 10 seconds
+        run: sleep 10
+      - name: Test file exists
+        run: grep -i "dragon" dragon.txt
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read file
+        run: cat dragon.txt
+      - name: Deploy
+        run: echo "Deploying the application..."
