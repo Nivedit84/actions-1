@@ -10,8 +10,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v7.0.0
       - name: Display Step name
-        run: echo "The name of this workflow is:" ${{ github.workflow }}
-      - name: List files
-        run: ls -la
-      - name: Read files
-        run: cat README.md
+        run: |
+             echo "The name of this workflow is:" ${{ github.workflow }}
+             ls -ltra
+             cat README.md
+      - name: Generate ASCII Artwork
+        run: cowsay -f dragon "Run for cover" >> dragon.txt
+    #  - name: List files
+      #  run: ls -la
+     # - name: Read files
+      #  run: cat README.md
