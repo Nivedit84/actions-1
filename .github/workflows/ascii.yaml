@@ -1,0 +1,17 @@
+name: Installing ASCII Artwork
+
+on:
+  push:
+
+jobs:
+  display_job_name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7.0.0
+      - name: Install Cowsay
+        run: sudo apt-get install cowsay -y
+      - name: Execute cowsay CMD
+        run: cowsay -f dragon "Run for cover" >> dragon.txt
+      - name: Read File
+        run: cat dragon.tx
