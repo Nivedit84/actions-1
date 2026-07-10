@@ -7,6 +7,8 @@ jobs:
   display_job_name:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7.0.0
       - name: Display Step name
         run: echo "The name of this workflow is:" ${{ github.workflow }}
       - name: List files
