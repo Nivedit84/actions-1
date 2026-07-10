@@ -23,7 +23,7 @@ jobs:
     needs: build_job
     steps:
       - name: Download dragon.txt artifact
-        uses: actions/download-artifact@v7.0.1
+        uses: actions/download-artifact@v8.0.1
         with:
           name: dragon-artifact
       - name: Test file exists
@@ -33,7 +33,7 @@ jobs:
     needs: test_job
     steps:
       - name: Download dragon.txt artifact
-        uses: actions/download-artifact@v7.0.1
+        uses: actions/download-artifact@v8.0.1
         with:
           name: dragon-artifact
       - name: Read file
