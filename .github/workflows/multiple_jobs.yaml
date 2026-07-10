@@ -13,20 +13,29 @@ jobs:
         run: |
               chmod +x ./scripts/cowsay.sh
               ./scripts/cowsay.sh
-      - name: Sleep for 30 seconds
-        run: sleep 30
+      - name: Upload dragon.txt as artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: dragon-artifact
+          path: dragon.txt
   test_job:
     runs-on: ubuntu-latest
     needs: build_job
     steps:
-      - name: Sleep for 10 seconds
-        run: sleep 10
+      - name: Download dragon.txt artifact
+        uses: actions/download-artifact@v7.0.1
+        with:
+          name: dragon-artifact
       - name: Test file exists
         run: grep -i "dragon" dragon.txt
   deploy_job:
     runs-on: ubuntu-latest
     needs: test_job
     steps:
+      - name: Download dragon.txt artifact
+        uses: actions/download-artifact@v7.0.1
+        with:
+          name: dragon-artifact
       - name: Read file
         run: cat dragon.txt
       - name: Deploy
