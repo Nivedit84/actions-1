@@ -1,0 +1,15 @@
+name: Displaying name of the workflow
+
+on:
+  push:
+
+jobs:
+  display_job_name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Step name
+        run: echo "The name of this workflow is:" ${{ github.workflow }}
+      - name: List files
+        run: ls -la
+      - name: Read files
+        run: cat .github/workflows/demo.yaml
