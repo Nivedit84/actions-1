@@ -14,4 +14,4 @@ jobs:
       - name: Execute cowsay CMD
         run: cowsay -f dragon "Run for cover" >> dragon.txt
       - name: Read File
-        run: cat dragon.tx
+        run: cat dragon.txt
